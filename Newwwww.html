@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>四週年快樂，我的鼻鼻！</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700;900&family=Nunito:wght@600;700;800&display=swap');
+
+:root{
+  --bg1:#fff8f5;
+  --bg2:#f7edf5;
+  --ink:#493b46;
+  --muted:#887782;
+  --rose:#c97f9c;
+  --rose2:#e5a9bd;
+  --gold:#c7a66a;
+  --glass:rgba(255,255,255,.64);
+  --shadow:0 24px 70px rgba(116,78,101,.16);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Noto Serif TC",serif;color:var(--ink)}
+body{
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 15%,rgba(255,255,255,.95) 0 5%,transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(237,207,222,.55),transparent 28%),
+    radial-gradient(circle at 50% 110%,rgba(224,193,210,.45),transparent 38%),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;opacity:.32;
+  background-image:radial-gradient(rgba(110,70,95,.14) .7px,transparent .7px);
+  background-size:9px 9px;
+}
+.page{min-height:100svh;display:grid;place-items:center;padding:24px;position:relative}
+.card{
+  width:min(720px,94vw);min-height:min(720px,88svh);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:55px 35px;border:1px solid rgba(255,255,255,.8);
+  background:var(--glass);backdrop-filter:blur(18px);
+  border-radius:38px;box-shadow:var(--shadow);position:relative;
+}
+.ornament{position:absolute;inset:18px;border:1px solid rgba(199,166,106,.28);border-radius:28px;pointer-events:none}
+.eyebrow{font-family:Nunito,sans-serif;letter-spacing:.24em;font-size:12px;color:#a08b91;margin-bottom:18px;text-transform:uppercase}
+h1{font-size:clamp(38px,8vw,70px);line-height:1.18;text-align:center;margin:0 0 22px;font-weight:900;letter-spacing:.04em;
+background:linear-gradient(100deg,#9f607b,#d28fa7,#9c6f85);-webkit-background-clip:text;color:transparent}
+.subtitle{font-size:clamp(19px,4vw,27px);font-weight:600;text-align:center;margin:0 0 42px;letter-spacing:.08em}
+.question{font-size:clamp(21px,4.5vw,29px);font-weight:700;margin-bottom:25px;text-align:center}
+.buttons{display:flex;gap:18px;align-items:center;justify-content:center;min-height:100px;position:relative}
+button{
+  border:0;cursor:pointer;position:relative;z-index:20;pointer-events:auto;
+  font-family:"Noto Serif TC",serif;font-weight:700;font-size:21px;
+  border-radius:999px;padding:16px 42px;transition:transform .38s cubic-bezier(.2,.9,.2,1),box-shadow .3s,opacity .3s;
+  min-width:130px;touch-action:manipulation;
+}
+#yes{
+  color:white;background:linear-gradient(135deg,#bf7894,#d89bb0);
+  box-shadow:0 12px 28px rgba(190,112,145,.28);
+}
+#no{color:#66535e;background:rgba(255,255,255,.8);border:1px solid rgba(125,91,110,.18);box-shadow:0 8px 20px rgba(100,70,90,.08)}
+.hint{font-family:Nunito,sans-serif;color:#a28c96;font-size:12px;letter-spacing:.08em;margin-top:26px;opacity:.85}
+.corner{position:absolute;color:rgba(180,140,158,.45);font-size:18px}.c1{top:35px;left:42px}.c2{top:35px;right:42px}.c3{bottom:35px;left:42px}.c4{bottom:35px;right:42px}
+.error-layer{position:fixed;inset:0;pointer-events:none;z-index:10}
+.error{
+  position:absolute;width:min(330px,82vw);background:#f7f7f7;border:1px solid #c7c7c7;border-radius:10px;
+  box-shadow:0 20px 55px rgba(0,0,0,.24);overflow:hidden;font-family:Arial,sans-serif;
+  animation:errorIn .22s ease-out,shake .34s .22s ease-in-out;
+}
+.error .bar{height:32px;background:#ececec;border-bottom:1px solid #d0d0d0;display:flex;align-items:center;padding:0 10px;font-size:13px;color:#333}
+.error .x{margin-left:auto;color:#777;font-size:17px}
+.error .body{padding:19px 17px 17px;color:#333;font-size:14px;line-height:1.55;display:flex;gap:13px;align-items:flex-start}
+.warning{width:25px;height:25px;flex:none;background:#f0b323;clip-path:polygon(50% 0,100% 100%,0 100%);position:relative}
+.warning:after{content:"!";position:absolute;left:10px;top:7px;font-weight:900;color:white;font-size:13px}
+.error .ok{font-size:12px;background:#fff;border:1px solid #aaa;border-radius:4px;padding:5px 18px;margin:0 17px 14px;color:#333}
+@keyframes errorIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.heart,.petal{position:fixed;pointer-events:none;z-index:8;animation:floatUp linear forwards}
+.heart{font-size:20px;color:#d58da7}.petal{width:9px;height:15px;border-radius:80% 20% 80% 20%;background:#e8b5c5;opacity:.75}
+@keyframes floatUp{0%{transform:translateY(30px) rotate(0) scale(.7);opacity:0}15%{opacity:.85}100%{transform:translateY(-105vh) rotate(260deg) scale(1.2);opacity:0}}
+.success{display:none;text-align:center;animation:fadeUp .9s ease both}
+.success.show{display:block}
+.success h2{font-size:clamp(35px,8vw,60px);margin:0 0 20px;color:#a9607d;font-weight:900}
+.success .line{font-size:clamp(22px,5vw,34px);font-weight:800;margin:10px 0}
+.success .small{font-size:17px;color:#88727e;margin-top:24px}
+.replay{margin-top:32px!important;font-size:16px!important;padding:12px 28px!important;color:#8e6275!important;background:rgba(255,255,255,.75)!important;border:1px solid rgba(150,100,125,.18)!important;box-shadow:none!important}
+.main{display:block}.main.hidden{display:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(max-width:500px){
+  .card{min-height:82svh;padding:45px 20px;border-radius:30px}
+  .ornament{inset:12px;border-radius:22px}
+  button{font-size:19px;padding:14px 30px;min-width:115px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <main class="card">
+    <div class="ornament"></div>
+    <span class="corner c1">✦</span><span class="corner c2">✦</span><span class="corner c3">✦</span><span class="corner c4">✦</span>
+
+    <section class="main" id="main">
+      <div class="eyebrow">FOUR YEARS TOGETHER</div>
+      <h1>四週年快樂，<br>我的鼻鼻！</h1>
+      <p class="subtitle">有一個很重要的問題要問盧小鼻。</p>
+      <div class="question">黃小鼻是不是喜歡小奶？</div>
+      <div class="buttons">
+        <button id="yes">是</button>
+        <button id="no">否</button>
+      </div>
+      <div class="hint">請黃小鼻誠實回答 ♡</div>
+    </section>
+
+    <section class="success" id="success">
+      <div class="eyebrow">CORRECT ANSWER</div>
+      <h2>答對了！</h2>
+      <div class="line">黃小鼻就是愛太深</div>
+      <div class="small">四週年快樂，我的鼻鼻 ♡<br>往後也請多多指教。</div>
+      <button class="replay" id="replay">再看一次</button>
+    </section>
+  </main>
+</div>
+<div class="error-layer" id="errors"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const yes=document.getElementById('yes');
+const no=document.getElementById('no');
+const main=document.getElementById('main');
+const success=document.getElementById('success');
+const errors=document.getElementById('errors');
+const replay=document.getElementById('replay');
+let noCount=0, yesScale=1, noScale=1;
+
+const errorTexts=[
+  "偵測到選擇錯誤。請重新選擇。",
+  "系統表示：黃小鼻的答案不正確。",
+  "ERROR 404：找不到「不喜歡小奶」這個選項。",
+  "警告：請勿挑戰系統。",
+  "嚴重錯誤：正確答案只有一個。"
+];
+
+function spawnError(){
+  const el=document.createElement('div');
+  el.className='error';
+  const left=8+Math.random()*68, top=10+Math.random()*62;
+  el.style.left=left+'vw'; el.style.top=top+'vh';
+  el.innerHTML=`<div class="bar">System Warning <span class="x">×</span></div>
+  <div class="body"><div class="warning"></div><div>${errorTexts[Math.min(noCount-1,errorTexts.length-1)]}</div></div>
+  <button class="ok">確定</button>`;
+  errors.appendChild(el);
+  setTimeout(()=>el.remove(),1250+noCount*120);
+}
+function floaties(count=26){
+  for(let i=0;i<count;i++){
+    const el=document.createElement('span');
+    el.className=Math.random()>.45?'heart':'petal';
+    el.textContent=el.className==='heart'?'♥':'';
+    el.style.left=(Math.random()*100)+'vw';
+    el.style.top=(88+Math.random()*18)+'vh';
+    el.style.animationDuration=(3+Math.random()*4)+'s';
+    el.style.animationDelay=(Math.random()*1.5)+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),8000);
+  }
+}
+no.addEventListener('click',()=>{
+  noCount++;
+  yesScale=Math.min(1+noCount*.23,3.6);
+  noScale=Math.max(1-noCount*.14,.22);
+  yes.style.transform=`scale(${yesScale})`;
+  no.style.transform=`scale(${noScale})`;
+  no.style.opacity=Math.max(1-noCount*.08,.45);
+  spawnError();
+  if(noCount>=3){
+    document.querySelector('.hint').textContent='系統建議：請直接選擇正確答案。';
+  }
+});
+yes.addEventListener('click',()=>{
+  main.classList.add('hidden');
+  success.classList.add('show');
+  errors.innerHTML='';
+  floaties(42);
+});
+replay.addEventListener('click',()=>{
+  noCount=0; yesScale=1; noScale=1;
+  yes.style.transform='scale(1)'; no.style.transform='scale(1)'; no.style.opacity='1';
+  success.classList.remove('show'); main.classList.remove('hidden');
+  document.querySelector('.hint').textContent='請黃小鼻誠實回答 ♡';
+});
+});
+</script>
+</body>
+</html>
